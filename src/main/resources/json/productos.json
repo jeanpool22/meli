@@ -1,0 +1,155 @@
+[
+  {
+    "idProducto": 1,
+    "nombre": "Smartphone XYZ",
+    "imagenUrl": "https://ejemplo.com/img/smartphone_xyz.jpg",
+    "descripcion": "Smartphone de última generación con pantalla AMOLED.",
+    "precio": 599.99,
+    "calificacion": 4.5,
+    "especificaciones": ["128GB", "6GB RAM", "cámara 48MP"]
+  },
+  {
+    "idProducto": 2,
+    "nombre": "Laptop ABC",
+    "imagenUrl": "https://ejemplo.com/img/laptop_abc.jpg",
+    "descripcion": "Laptop ultraligera ideal para trabajo y estudio.",
+    "precio": 899.99,
+    "calificacion": 4.7,
+    "especificaciones": ["Intel i7", "16GB RAM", "512GB SSD"]
+  },
+  {
+    "idProducto": 3,
+    "nombre": "Tablet Pro",
+    "imagenUrl": "https://ejemplo.com/img/tablet_pro.jpg",
+    "descripcion": "Tablet con pantalla de 10 pulgadas y batería de larga duración.",
+    "precio": 399.99,
+    "calificacion": 4.3,
+    "especificaciones": ["64GB", "4GB RAM", "batería 8000mAh"]
+  },
+  {
+    "idProducto": 4,
+    "nombre": "Auriculares Bluetooth",
+    "imagenUrl": "https://ejemplo.com/img/auriculares_bt.jpg",
+    "descripcion": "Auriculares inalámbricos con cancelación de ruido.",
+    "precio": 129.99,
+    "calificacion": 4.6,
+    "especificaciones": ["Bluetooth 5.0", "Cancelación de ruido", "20h autonomía"]
+  },
+  {
+    "idProducto": 5,
+    "nombre": "Smartwatch Fitness",
+    "imagenUrl": "https://ejemplo.com/img/smartwatch_fitness.jpg",
+    "descripcion": "Reloj inteligente con monitor de ritmo cardíaco y GPS.",
+    "precio": 199.99,
+    "calificacion": 4.4,
+    "especificaciones": ["GPS", "Monitor cardíaco", "Resistente al agua"]
+  },
+  {
+    "idProducto": 6,
+    "nombre": "Cámara Deportiva",
+    "imagenUrl": "https://ejemplo.com/img/camara_deportiva.jpg",
+    "descripcion": "Cámara resistente al agua para deportes extremos.",
+    "precio": 249.99,
+    "calificacion": 4.2,
+    "especificaciones": ["4K", "Sumergible 30m", "WiFi"]
+  },
+  {
+    "idProducto": 7,
+    "nombre": "Monitor 27'' UHD",
+    "imagenUrl": "https://ejemplo.com/img/monitor_uhd.jpg",
+    "descripcion": "Monitor de 27 pulgadas con resolución 4K UHD.",
+    "precio": 349.99,
+    "calificacion": 4.8,
+    "especificaciones": ["4K UHD", "IPS", "HDMI/DisplayPort"]
+  },
+  {
+    "idProducto": 8,
+    "nombre": "Teclado Mecánico RGB",
+    "imagenUrl": "https://ejemplo.com/img/teclado_rgb.jpg",
+    "descripcion": "Teclado mecánico con retroiluminación RGB y switches azules.",
+    "precio": 89.99,
+    "calificacion": 4.5,
+    "especificaciones": ["Switches azules", "RGB", "Anti-ghosting"]
+  },
+  {
+    "idProducto": 9,
+    "nombre": "Mouse Gamer",
+    "imagenUrl": "https://ejemplo.com/img/mouse_gamer.jpg",
+    "descripcion": "Mouse ergonómico para gaming con 8 botones programables.",
+    "precio": 59.99,
+    "calificacion": 4.4,
+    "especificaciones": ["8000 DPI", "8 botones", "RGB"]
+  },
+  {
+    "idProducto": 10,
+    "nombre": "Impresora Multifunción",
+    "imagenUrl": "https://ejemplo.com/img/impresora_multi.jpg",
+    "descripcion": "Impresora multifunción con WiFi y escáner integrado.",
+    "precio": 149.99,
+    "calificacion": 4.1,
+    "especificaciones": ["WiFi", "Escáner", "Impresión dúplex"]
+  },
+  {
+    "idProducto": 11,
+    "nombre": "Router WiFi 6",
+    "imagenUrl": "https://ejemplo.com/img/router_wifi6.jpg",
+    "descripcion": "Router de última generación con tecnología WiFi 6.",
+    "precio": 179.99,
+    "calificacion": 4.7,
+    "especificaciones": ["WiFi 6", "4 antenas", "Gigabit"]
+  },
+  {
+    "idProducto": 12,
+    "nombre": "SSD Externo 1TB",
+    "imagenUrl": "https://ejemplo.com/img/ssd_externo.jpg",
+    "descripcion": "Disco SSD externo de 1TB, USB-C, alta velocidad.",
+    "precio": 129.99,
+    "calificacion": 4.6,
+    "especificaciones": ["1TB", "USB-C", "NVMe"]
+  },
+  {
+    "idProducto": 13,
+    "nombre": "Altavoz Inteligente",
+    "imagenUrl": "https://ejemplo.com/img/altavoz_inteligente.jpg",
+    "descripcion": "Altavoz con asistente de voz y control por WiFi.",
+    "precio": 99.99,
+    "calificacion": 4.3,
+    "especificaciones": ["WiFi", "Bluetooth", "Asistente de voz"]
+  },
+  {
+    "idProducto": 14,
+    "nombre": "Proyector LED",
+    "imagenUrl": "https://ejemplo.com/img/proyector_led.jpg",
+    "descripcion": "Proyector LED portátil con resolución Full HD.",
+    "precio": 219.99,
+    "calificacion": 4.2,
+    "especificaciones": ["Full HD", "Portátil", "HDMI"]
+  },
+  {
+    "idProducto": 15,
+    "nombre": "Cargador Rápido USB",
+    "imagenUrl": "https://ejemplo.com/img/cargador_usb.jpg",
+    "descripcion": "Cargador rápido USB con 4 puertos y carga inteligente.",
+    "precio": 39.99,
+    "calificacion": 4.5,
+    "especificaciones": ["4 puertos", "Carga rápida", "Smart IC"]
+  },
+  {
+    "idProducto": 16,
+    "nombre": "Webcam HD",
+    "imagenUrl": "https://ejemplo.com/img/webcam_hd.jpg",
+    "descripcion": "Webcam HD con micrófono integrado y enfoque automático.",
+    "precio": 69.99,
+    "calificacion": 4.4,
+    "especificaciones": ["HD", "Micrófono", "Enfoque automático"]
+  },
+  {
+    "idProducto": 17,
+    "nombre": "MicroSD 128GB",
+    "imagenUrl": "https://ejemplo.com/img/microsd_128gb.jpg",
+    "descripcion": "Tarjeta MicroSD de 128GB, clase 10, alta velocidad.",
+    "precio": 29.99,
+    "calificacion": 4.6,
+    "especificaciones": ["128GB", "Clase 10", "UHS-I"]
+  }
+]
