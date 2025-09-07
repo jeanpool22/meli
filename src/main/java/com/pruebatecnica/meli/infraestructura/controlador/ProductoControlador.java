@@ -4,6 +4,8 @@ import com.pruebatecnica.meli.aplicacion.casodeuso.ListarProductosCasoUso;
 import com.pruebatecnica.meli.aplicacion.casodeuso.ObtenerProductoPorIdCasoUso;
 import com.pruebatecnica.meli.compartido.utilidad.ErrorRespuesta;
 import com.pruebatecnica.meli.dominio.modelo.Producto;
+import com.pruebatecnica.meli.dominio.modelo.ProductoCriteriosBusqueda;
+import com.pruebatecnica.meli.dominio.modelo.ResultadoPaginado;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -15,8 +17,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
+import java.util.Optional;
 
 @Tag(name = "Producto", description = "Operaciones sobre productos")
 @RestController
@@ -30,7 +33,7 @@ public class ProductoControlador {
         this.obtenerProductoPorIdCasoUso = obtenerProductoPorIdCasoUso;
     }
 
-    @Operation(summary = "Listar productos", description = "Devuelve la lista de productos")
+    @Operation(summary = "Listar productos", description = "Devuelve la lista de productos con filtros y paginación")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -74,8 +77,22 @@ public class ProductoControlador {
             )
     })
     @GetMapping
-    public List<Producto> listarProductos() {
-        return listarProductosCasoUso.listarProductos();
+    public ResultadoPaginado<Producto> listarProductos(
+            @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String categoria,
+            @RequestParam(required = false) Double precioMinimo,
+            @RequestParam(required = false) Double precioMaximo,
+            @RequestParam(defaultValue = "0") int pagina,
+            @RequestParam(defaultValue = "10") int tamanioPagina) {
+        ProductoCriteriosBusqueda criterios = new ProductoCriteriosBusqueda(
+            Optional.ofNullable(nombre),
+            Optional.ofNullable(categoria),
+            Optional.ofNullable(precioMinimo),
+            Optional.ofNullable(precioMaximo),
+            pagina,
+            tamanioPagina
+        );
+        return listarProductosCasoUso.listarProductos(criterios);
     }
 
     @Operation(summary = "Obtener producto por ID", description = "Devuelve un producto dado su identificador")

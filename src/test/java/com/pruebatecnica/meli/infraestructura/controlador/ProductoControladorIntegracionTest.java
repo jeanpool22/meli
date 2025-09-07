@@ -21,9 +21,9 @@ class ProductoControladorIntegracionTest {
     void listarProductos_debeRetornarListaDeProductos() throws Exception {
         mockMvc.perform(get("/productos").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].idProducto").exists())
-                .andExpect(jsonPath("$[0].nombre").exists())
-                .andExpect(jsonPath("$[0].especificaciones").isArray());
+                .andExpect(jsonPath("$.elementos[0].idProducto").exists())
+                .andExpect(jsonPath("$.elementos[0].nombre").exists())
+                .andExpect(jsonPath("$.elementos[0].especificaciones").isArray());
     }
 
     @Test
