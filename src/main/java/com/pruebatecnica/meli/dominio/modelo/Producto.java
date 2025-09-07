@@ -9,5 +9,7 @@ public record Producto(
         String descripcion,
         double precio,
         double calificacion,
+        String categoria,
+        String marca,
         List<String> especificaciones
 ) {}

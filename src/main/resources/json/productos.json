@@ -6,6 +6,8 @@
     "descripcion": "Smartphone de última generación con pantalla AMOLED.",
     "precio": 599.99,
     "calificacion": 4.5,
+    "categoria": "Electrónica",
+    "marca": "XYZ",
     "especificaciones": ["128GB", "6GB RAM", "cámara 48MP"]
   },
   {
@@ -15,6 +17,8 @@
     "descripcion": "Laptop ultraligera ideal para trabajo y estudio.",
     "precio": 899.99,
     "calificacion": 4.7,
+    "categoria": "Computadoras",
+    "marca": "ABC",
     "especificaciones": ["Intel i7", "16GB RAM", "512GB SSD"]
   },
   {
@@ -24,6 +28,8 @@
     "descripcion": "Tablet con pantalla de 10 pulgadas y batería de larga duración.",
     "precio": 399.99,
     "calificacion": 4.3,
+    "categoria": "Tablets",
+    "marca": "Pro",
     "especificaciones": ["64GB", "4GB RAM", "batería 8000mAh"]
   },
   {
@@ -33,6 +39,8 @@
     "descripcion": "Auriculares inalámbricos con cancelación de ruido.",
     "precio": 129.99,
     "calificacion": 4.6,
+    "categoria": "Audio",
+    "marca": "Sound",
     "especificaciones": ["Bluetooth 5.0", "Cancelación de ruido", "20h autonomía"]
   },
   {
@@ -42,6 +50,8 @@
     "descripcion": "Reloj inteligente con monitor de ritmo cardíaco y GPS.",
     "precio": 199.99,
     "calificacion": 4.4,
+    "categoria": "Wearables",
+    "marca": "Fit",
     "especificaciones": ["GPS", "Monitor cardíaco", "Resistente al agua"]
   },
   {
@@ -51,6 +61,8 @@
     "descripcion": "Cámara resistente al agua para deportes extremos.",
     "precio": 249.99,
     "calificacion": 4.2,
+    "categoria": "Cámaras",
+    "marca": "Action",
     "especificaciones": ["4K", "Sumergible 30m", "WiFi"]
   },
   {
@@ -60,6 +72,8 @@
     "descripcion": "Monitor de 27 pulgadas con resolución 4K UHD.",
     "precio": 349.99,
     "calificacion": 4.8,
+    "categoria": "Monitores",
+    "marca": "View",
     "especificaciones": ["4K UHD", "IPS", "HDMI/DisplayPort"]
   },
   {
@@ -69,6 +83,8 @@
     "descripcion": "Teclado mecánico con retroiluminación RGB y switches azules.",
     "precio": 89.99,
     "calificacion": 4.5,
+    "categoria": "Periféricos",
+    "marca": "Mech",
     "especificaciones": ["Switches azules", "RGB", "Anti-ghosting"]
   },
   {
@@ -78,6 +94,8 @@
     "descripcion": "Mouse ergonómico para gaming con 8 botones programables.",
     "precio": 59.99,
     "calificacion": 4.4,
+    "categoria": "Periféricos",
+    "marca": "Gamer",
     "especificaciones": ["8000 DPI", "8 botones", "RGB"]
   },
   {
@@ -87,6 +105,8 @@
     "descripcion": "Impresora multifunción con WiFi y escáner integrado.",
     "precio": 149.99,
     "calificacion": 4.1,
+    "categoria": "Impresoras",
+    "marca": "Print",
     "especificaciones": ["WiFi", "Escáner", "Impresión dúplex"]
   },
   {
@@ -96,6 +116,8 @@
     "descripcion": "Router de última generación con tecnología WiFi 6.",
     "precio": 179.99,
     "calificacion": 4.7,
+    "categoria": "Redes",
+    "marca": "Link",
     "especificaciones": ["WiFi 6", "4 antenas", "Gigabit"]
   },
   {
@@ -105,6 +127,8 @@
     "descripcion": "Disco SSD externo de 1TB, USB-C, alta velocidad.",
     "precio": 129.99,
     "calificacion": 4.6,
+    "categoria": "Almacenamiento",
+    "marca": "Speed",
     "especificaciones": ["1TB", "USB-C", "NVMe"]
   },
   {
@@ -114,6 +138,8 @@
     "descripcion": "Altavoz con asistente de voz y control por WiFi.",
     "precio": 99.99,
     "calificacion": 4.3,
+    "categoria": "Audio",
+    "marca": "Smart",
     "especificaciones": ["WiFi", "Bluetooth", "Asistente de voz"]
   },
   {
@@ -123,6 +149,8 @@
     "descripcion": "Proyector LED portátil con resolución Full HD.",
     "precio": 219.99,
     "calificacion": 4.2,
+    "categoria": "Video",
+    "marca": "Cinema",
     "especificaciones": ["Full HD", "Portátil", "HDMI"]
   },
   {
@@ -132,6 +160,8 @@
     "descripcion": "Cargador rápido USB con 4 puertos y carga inteligente.",
     "precio": 39.99,
     "calificacion": 4.5,
+    "categoria": "Accesorios",
+    "marca": "Power",
     "especificaciones": ["4 puertos", "Carga rápida", "Smart IC"]
   },
   {
@@ -141,6 +171,8 @@
     "descripcion": "Webcam HD con micrófono integrado y enfoque automático.",
     "precio": 69.99,
     "calificacion": 4.4,
+    "categoria": "Periféricos",
+    "marca": "Cam",
     "especificaciones": ["HD", "Micrófono", "Enfoque automático"]
   },
   {
@@ -150,6 +182,8 @@
     "descripcion": "Tarjeta MicroSD de 128GB, clase 10, alta velocidad.",
     "precio": 29.99,
     "calificacion": 4.6,
+    "categoria": "Almacenamiento",
+    "marca": "Mem",
     "especificaciones": ["128GB", "Clase 10", "UHS-I"]
   }
 ]
