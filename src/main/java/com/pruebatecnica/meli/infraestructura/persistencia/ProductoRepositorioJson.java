@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
@@ -44,6 +45,17 @@ public class ProductoRepositorioJson implements ProductoRepositorio {
             throw new ErrorLecturaJsonException(ERROR_AL_PARSEAR_EL_JSON_DE_PRODUCTOS, e);
         } catch (IOException e) {
             throw new ErrorLecturaJsonException(ERROR_AL_LEER_PRODUCTOS_DESDE_JSON, e);
+        }
+    }
+
+    @Override
+    public Optional<Producto> obtenerProductoPorId(Long idProducto) {
+        try {
+            return listarProductos().stream()
+                    .filter(producto -> producto.idProducto().equals(idProducto))
+                    .findFirst();
+        } catch (NumberFormatException e) {
+            return Optional.empty();
         }
     }
 }

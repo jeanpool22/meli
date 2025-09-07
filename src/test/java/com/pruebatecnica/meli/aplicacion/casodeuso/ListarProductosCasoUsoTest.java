@@ -17,6 +17,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class ListarProductosCasoUsoTest {
+    private static final String ERROR_DE_REPOSITORIO = "Error de repositorio";
+
     private ProductoRepositorio productoRepositorio;
     private ListarProductosCasoUso listarProductosCasoUso;
 
@@ -52,10 +54,10 @@ class ListarProductosCasoUsoTest {
 
     @Test
     void listarProductos_debePropagarExcepcionSiRepositorioFalla() {
-        when(productoRepositorio.listarProductos()).thenThrow(new RuntimeException("Error de repositorio"));
+        when(productoRepositorio.listarProductos()).thenThrow(new RuntimeException(ERROR_DE_REPOSITORIO));
 
         RuntimeException ex = assertThrows(RuntimeException.class, () -> listarProductosCasoUso.listarProductos());
-        assertEquals("Error de repositorio", ex.getMessage());
+        assertEquals(ERROR_DE_REPOSITORIO, ex.getMessage());
     }
 }
 

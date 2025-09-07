@@ -25,5 +25,21 @@ class ProductoControladorIntegracionTest {
                 .andExpect(jsonPath("$[0].nombre").exists())
                 .andExpect(jsonPath("$[0].especificaciones").isArray());
     }
-}
 
+    @Test
+    void obtenerProductoPorId_debeRetornarProductoSiExiste() throws Exception {
+        mockMvc.perform(get("/productos/{idProducto}", 1L).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.idProducto").value(1))
+                .andExpect(jsonPath("$.nombre").exists())
+                .andExpect(jsonPath("$.precio").exists());
+    }
+
+    @Test
+    void obtenerProductoPorId_debeRetornar404SiNoExiste() throws Exception {
+        mockMvc.perform(get("/productos/{idProducto}", 9999L).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.status").value(404))
+                .andExpect(jsonPath("$.titulo").value("Producto no encontrado"));
+    }
+}
