@@ -1,7 +1,8 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.5.5'
-	id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+    id 'org.springframework.boot' version '3.5.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'info.solidsoft.pitest' version '1.15.0'
 }
 
 group = 'com.pruebatecnica'
@@ -14,26 +15,66 @@ java {
 	}
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
-repositories {
-	mavenCentral()
-}
+repositories { mavenCentral() }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.12'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.12'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // JUnit 5 support para PIT
+    testImplementation 'org.pitest:pitest-junit5-plugin:1.2.1'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+pitest {
+    // Versión del motor PIT (Java 21 OK)
+    pitestVersion = '1.20.2'
+
+    // JUnit 5
+    testPlugin = 'junit5'
+    junit5PluginVersion = '1.2.1'
+
+    // Qué mutar y qué tests ejecutar (patrones por paquete)
+    targetClasses = ['com.pruebatecnica.meli.*']   // código de producción
+    targetTests   = ['com.pruebatecnica.meli.*']   // tests
+
+    // Reportes
+    outputFormats = ['HTML', 'XML']
+    timestampedReports = false
+
+    // Rendimiento/estabilidad
+    threads = Math.max(Runtime.runtime.availableProcessors() - 1, 1)
+    timeoutConstInMillis = 4000
+    // Abre módulos JDK que a veces piden libs de test/mock
+    jvmArgs = [
+            '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.util=ALL-UNNAMED'
+    ]
+
+    // Mutadores
+    mutators = ['DEFAULTS'] // o ['STRONGER']
+
+    // Umbrales iniciales
+    coverageThreshold = 0
+    mutationThreshold = 0
+
+    // Excluir clases
+    excludedClasses = [
+            'com.pruebatecnica.meli.*Application',
+            'com.pruebatecnica.meli.infraestructura.configuracion.*'
+    ]
+
+    // Evita “no classpath too long” y acelera en Gradle modernos
+    useClasspathFile = true
 }
