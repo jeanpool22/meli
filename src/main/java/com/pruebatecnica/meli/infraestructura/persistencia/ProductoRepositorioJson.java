@@ -32,6 +32,7 @@ public class ProductoRepositorioJson implements ProductoRepositorio {
         this.objectMapper = objectMapper;
     }
 
+    // Este método lee el archivo JSON y convierte su contenido en una lista de objetos Producto.
     @Override
     public List<Producto> listarProductos() {
         log.info("Intentando leer el archivo de productos: {}", PRODUCTOS_JSON);
@@ -48,6 +49,7 @@ public class ProductoRepositorioJson implements ProductoRepositorio {
         }
     }
 
+    // Este método busca un producto por su ID en la lista de productos.
     @Override
     public Optional<Producto> obtenerProductoPorId(Long idProducto) {
         try {
@@ -60,6 +62,7 @@ public class ProductoRepositorioJson implements ProductoRepositorio {
         }
     }
 
+    // Este método filtra y devuelve una lista de productos cuyos IDs están en la lista proporcionada.
     @Override
     public List<Producto> obtenerProductosPorIds(List<Long> ids) {
         log.info("Obteniendo productos por IDs: {}", ids);

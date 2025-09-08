@@ -36,7 +36,7 @@ public class ManejadorGlobalExcepciones {
     private static final String LOG_ERROR_GENERAL_LECTURA = "Error general leyendo productos";
     private static final String LOG_ERROR_NO_CONTROLADO = "Error no controlado";
 
-    // Úsalo para GET /productos/{id}, no para listados
+    // Cuando no se encuentra un producto específico
     @ExceptionHandler(ProductoNoEncontradoException.class)
     public ResponseEntity<ErrorRespuesta> manejarProductoNoEncontrado(ProductoNoEncontradoException ex,
                                                                       WebRequest request) {

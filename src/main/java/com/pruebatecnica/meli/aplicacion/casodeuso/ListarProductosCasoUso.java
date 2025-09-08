@@ -20,6 +20,7 @@ public class ListarProductosCasoUso {
         this.productoRepositorio = productoRepositorio;
     }
 
+    // Este método obtiene y retoran la lista de productos una vez aplicados los filtros y la paginación.
     public ResultadoPaginado<Producto> listarProductos(ProductoCriteriosBusqueda criterios) {
         List<Producto> productos = productoRepositorio.listarProductos();
 
@@ -29,6 +30,7 @@ public class ListarProductosCasoUso {
         return paginarProductos(productos, criterios);
     }
 
+    // Este método construye una lista de especificaciones basadas en los criterios de búsqueda proporcionados.
     private List<Especificacion<Producto>> construirEspecificaciones(ProductoCriteriosBusqueda criterios) {
         List<Especificacion<Producto>> especificaciones = new ArrayList<>();
 
@@ -43,6 +45,7 @@ public class ListarProductosCasoUso {
         return especificaciones;
     }
 
+    // Este método filtra la lista de productos utilizando las especificaciones proporcionadas.
     private List<Producto> filtrarProductos(List<Producto> productos, List<Especificacion<Producto>> especificaciones) {
         for (Especificacion<Producto> especificacion : especificaciones) {
             productos = productos.stream().filter(especificacion::esSatisfechoPor).toList();
@@ -50,6 +53,7 @@ public class ListarProductosCasoUso {
         return productos;
     }
 
+    // Este método pagina la lista de productos según los criterios de paginación proporcionados.
     private ResultadoPaginado<Producto> paginarProductos(List<Producto> productos, ProductoCriteriosBusqueda criterios) {
         int totalElementos = productos.size();
         int pagina = criterios.pagina();

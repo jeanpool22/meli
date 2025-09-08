@@ -24,6 +24,7 @@ public class ProductoHealthIndicator implements HealthIndicator {
         this.productoRepositorio = productoRepositorio;
     }
 
+    // Indicador de salud personalizado para el servicio de productos.
     @Override
     public Health health() {
         try {

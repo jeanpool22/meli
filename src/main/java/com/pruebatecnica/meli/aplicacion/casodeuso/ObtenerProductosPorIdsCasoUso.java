@@ -22,6 +22,7 @@ public class ObtenerProductosPorIdsCasoUso {
         this.productoRepositorio = productoRepositorio;
     }
 
+    // Este método valida los parámetros de entrada y luego llama al repositorio para obtener los productos.
     public List<Producto> obtenerProductosPorIds(List<Long> ids) {
         validarParametros(ids);
         validarValoresIds(ids);
@@ -30,6 +31,7 @@ public class ObtenerProductosPorIdsCasoUso {
         return productoRepositorio.obtenerProductosPorIds(ids);
     }
 
+    // Este método valida que la lista de IDs no sea nula ni vacía.
     private void validarParametros(List<Long> ids) {
         if (ids == null) {
             throw new ParametrosInvalidosException(LA_LISTA_DE_IDS_NO_PUEDE_SER_NULA);
@@ -40,6 +42,7 @@ public class ObtenerProductosPorIdsCasoUso {
         }
     }
 
+    // Este método valida que todos los IDs en la lista sean mayores a cero.
     private void validarValoresIds(List<Long> ids) {
         boolean hayInvalido = ids.stream().anyMatch(id -> id == null || id <= 0);
         if (hayInvalido) {
@@ -47,6 +50,7 @@ public class ObtenerProductosPorIdsCasoUso {
         }
     }
 
+    // Este método valida que la cantidad de IDs esté dentro del rango permitido.
     private void validarCantidadIds(List<Long> ids) {
         int cantidad = ids.size();
         if (cantidad < ProductoConstantes.MINIMO_IDS_CONSULTA || cantidad > ProductoConstantes.MAXIMO_IDS_CONSULTA) {

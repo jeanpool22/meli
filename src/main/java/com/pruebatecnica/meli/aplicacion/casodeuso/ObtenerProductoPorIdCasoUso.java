@@ -16,6 +16,7 @@ public class ObtenerProductoPorIdCasoUso {
         this.productoRepositorio = productoRepositorio;
     }
 
+    // Este método obtiene un producto por su ID, lanzando una excepción si no se encuentra.
     public Producto obtenerProductoPorId(Long idProducto) {
         Optional<Producto> producto = productoRepositorio.obtenerProductoPorId(idProducto);
         return producto.orElseThrow(() -> new ProductoNoEncontradoException(String.format(NO_FUE_POSIBLE_ENCONTRAR_EL_PRODUCTO, idProducto)));
