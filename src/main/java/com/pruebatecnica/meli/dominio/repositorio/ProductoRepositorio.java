@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface ProductoRepositorio {
     List<Producto> listarProductos();
     Optional<Producto> obtenerProductoPorId(Long idProducto);
+    List<Producto> obtenerProductosPorIds(List<Long> ids);
 }

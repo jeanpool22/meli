@@ -2,7 +2,9 @@ package com.pruebatecnica.meli.infraestructura.controlador;
 
 import com.pruebatecnica.meli.aplicacion.casodeuso.ListarProductosCasoUso;
 import com.pruebatecnica.meli.aplicacion.casodeuso.ObtenerProductoPorIdCasoUso;
+import com.pruebatecnica.meli.aplicacion.casodeuso.ObtenerProductosPorIdsCasoUso;
 import com.pruebatecnica.meli.compartido.utilidad.ErrorRespuesta;
+import com.pruebatecnica.meli.compartido.utilidad.ProductoConstantes;
 import com.pruebatecnica.meli.dominio.modelo.Producto;
 import com.pruebatecnica.meli.dominio.modelo.ProductoCriteriosBusqueda;
 import com.pruebatecnica.meli.dominio.modelo.ResultadoPaginado;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 import java.util.Optional;
 
 @Tag(name = "Producto", description = "Operaciones sobre productos")
@@ -27,10 +31,14 @@ import java.util.Optional;
 public class ProductoControlador {
     private final ListarProductosCasoUso listarProductosCasoUso;
     private final ObtenerProductoPorIdCasoUso obtenerProductoPorIdCasoUso;
+    private final ObtenerProductosPorIdsCasoUso obtenerProductosPorIdsCasoUso;
 
-    public ProductoControlador(ListarProductosCasoUso listarProductosCasoUso, ObtenerProductoPorIdCasoUso obtenerProductoPorIdCasoUso) {
+    public ProductoControlador(ListarProductosCasoUso listarProductosCasoUso,
+                               ObtenerProductoPorIdCasoUso obtenerProductoPorIdCasoUso,
+                               ObtenerProductosPorIdsCasoUso obtenerProductosPorIdsCasoUso) {
         this.listarProductosCasoUso = listarProductosCasoUso;
         this.obtenerProductoPorIdCasoUso = obtenerProductoPorIdCasoUso;
+        this.obtenerProductosPorIdsCasoUso = obtenerProductosPorIdsCasoUso;
     }
 
     @Operation(summary = "Listar productos", description = "Devuelve la lista de productos con filtros y paginación")
@@ -123,5 +131,40 @@ public class ProductoControlador {
     @GetMapping("{idProducto}")
     public Producto obtenerProductoPorId(@PathVariable Long idProducto) {
         return obtenerProductoPorIdCasoUso.obtenerProductoPorId(idProducto);
+    }
+
+    @Operation(
+            summary = "Obtener productos por múltiples IDs",
+            description = "Devuelve una lista de productos dados sus identificadores (entre 2 y 5 IDs)"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "OK",
+                    content = @Content(
+                            mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Producto.class))
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Parámetros inválidos",
+                    content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorRespuesta.class),
+                    examples = @ExampleObject(
+                            value = """
+                            {
+                              "status": 400,
+                              "titulo": "Parámetros inválidos",
+                              "mensaje": "La cantidad de IDs debe estar entre 2 y 5",
+                              "ruta": "uri=/productos/comparador",
+                              "timestamp": "2025-09-07T12:00:00.000Z"
+                            }
+                            """))
+            )
+    })
+    @GetMapping("/comparador")
+    public List<Producto> obtenerProductosPorIds(@RequestParam(name = ProductoConstantes.PARAMETRO_IDS) List<Long> idProductos) {
+        return obtenerProductosPorIdsCasoUso.obtenerProductosPorIds(idProductos);
     }
 }

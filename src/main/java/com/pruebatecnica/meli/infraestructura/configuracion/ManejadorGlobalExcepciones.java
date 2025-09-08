@@ -1,7 +1,9 @@
 package com.pruebatecnica.meli.infraestructura.configuracion;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.pruebatecnica.meli.compartido.excepciones.CantidadIdsInvalidaException;
 import com.pruebatecnica.meli.compartido.excepciones.ErrorLecturaJsonException;
+import com.pruebatecnica.meli.compartido.excepciones.ParametrosInvalidosException;
 import com.pruebatecnica.meli.compartido.excepciones.ProductoNoEncontradoException;
 import com.pruebatecnica.meli.compartido.utilidad.ErrorRespuesta;
 import org.slf4j.Logger;
@@ -30,9 +32,9 @@ public class ManejadorGlobalExcepciones {
     private static final String LOG_PRODUCTO_NO_ENCONTRADO = "Producto no encontrado: {}";
     private static final String LOG_RUTA_NO_ENCONTRADA = "Ruta no encontrada: {}";
     private static final String LOG_ARCHIVO_NO_ENCONTRADO = "Archivo de productos no encontrado";
-    private static final String LOG_ERROR_PARSEO_JSON  = "Error de parseo del JSON de productos";
-    private static final String LOG_ERROR_GENERAL_LECTURA  = "Error general leyendo productos";
-    private static final String LOG_ERROR_NO_CONTROLADO  = "Error no controlado";
+    private static final String LOG_ERROR_PARSEO_JSON = "Error de parseo del JSON de productos";
+    private static final String LOG_ERROR_GENERAL_LECTURA = "Error general leyendo productos";
+    private static final String LOG_ERROR_NO_CONTROLADO = "Error no controlado";
 
     // Úsalo para GET /productos/{id}, no para listados
     @ExceptionHandler(ProductoNoEncontradoException.class)
@@ -70,7 +72,23 @@ public class ManejadorGlobalExcepciones {
         return respuesta(HttpStatus.INTERNAL_SERVER_ERROR, ERROR_AL_LEER_DATOS_DE_PRODUCTOS, ex, request);
     }
 
-    // Fallback
+    // Manejo específico para parámetros inválidos generales
+    @ExceptionHandler(ParametrosInvalidosException.class)
+    public ResponseEntity<ErrorRespuesta> manejarParametrosInvalidos(ParametrosInvalidosException ex,
+                                                                     WebRequest request) {
+        log.warn("Parámetros inválidos: {}", ex.getMessage());
+        return respuesta(HttpStatus.BAD_REQUEST, "Parámetros inválidos", ex, request);
+    }
+
+    // Manejo específico para cantidad de IDs inválida
+    @ExceptionHandler(CantidadIdsInvalidaException.class)
+    public ResponseEntity<ErrorRespuesta> manejarCantidadIdsInvalida(CantidadIdsInvalidaException ex,
+                                                                     WebRequest request) {
+        log.warn("Cantidad de IDs inválida - Recibidos: {}, Rango válido: {}-{}",
+                ex.getCantidadRecibida(), ex.getMinimo(), ex.getMaximo());
+        return respuesta(HttpStatus.BAD_REQUEST, "Cantidad de IDs inválida", ex, request);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorRespuesta> manejarExcepcionGeneral(Exception ex, WebRequest request) {
         log.error(LOG_ERROR_NO_CONTROLADO, ex);

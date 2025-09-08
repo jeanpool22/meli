@@ -51,11 +51,20 @@ public class ProductoRepositorioJson implements ProductoRepositorio {
     @Override
     public Optional<Producto> obtenerProductoPorId(Long idProducto) {
         try {
+            log.info("Obteniendo producto por ID: {}", idProducto);
             return listarProductos().stream()
                     .filter(producto -> producto.idProducto().equals(idProducto))
                     .findFirst();
         } catch (NumberFormatException e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public List<Producto> obtenerProductosPorIds(List<Long> ids) {
+        log.info("Obteniendo productos por IDs: {}", ids);
+        return listarProductos().stream()
+                .filter(producto -> ids.contains(producto.idProducto()))
+                .toList();
     }
 }
