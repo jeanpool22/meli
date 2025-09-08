@@ -10,6 +10,13 @@ public class ProductoHealthIndicator implements HealthIndicator {
 
     private static final String ERROR = "error";
     private static final String SIMULADO = "simulado";
+    private static final String TOTAL_PRODUCTOS = "totalProductos";
+    private static final String NO_SE_ENCONTRARON_PRODUCTOS_EN_EL_REPOSITORIO = "No se encontraron productos en el repositorio";
+    private static final String STATUS = "status";
+    private static final String SERVICIO_DE_PRODUCTOS_OPERATIVO = "Servicio de productos operativo";
+    private static final String REPOSITORIO_TIPO = "repositorioTipo";
+    private static final String ERROR_AL_ACCEDER_AL_REPOSITORIO_DE_PRODUCTOS = "Error al acceder al repositorio de productos";
+    private static final String MENSAJE = "mensaje";
 
     private final ProductoRepositorio productoRepositorio;
 
@@ -24,23 +31,23 @@ public class ProductoHealthIndicator implements HealthIndicator {
 
             if (productos.isEmpty()) {
                 return Health.down()
-                        .withDetail(ERROR, "No se encontraron productos en el repositorio")
-                        .withDetail("totalProductos", 0)
+                        .withDetail(ERROR, NO_SE_ENCONTRARON_PRODUCTOS_EN_EL_REPOSITORIO)
+                        .withDetail(TOTAL_PRODUCTOS, 0)
                         .withDetail(SIMULADO, false)
                         .build();
             }
 
             return Health.up()
-                    .withDetail("status", "Servicio de productos operativo")
-                    .withDetail("totalProductos", productos.size())
-                    .withDetail("repositorioTipo", productoRepositorio.getClass().getSimpleName())
+                    .withDetail(STATUS, SERVICIO_DE_PRODUCTOS_OPERATIVO)
+                    .withDetail(TOTAL_PRODUCTOS, productos.size())
+                    .withDetail(REPOSITORIO_TIPO, productoRepositorio.getClass().getSimpleName())
                     .withDetail(SIMULADO, false)
                     .build();
 
         } catch (Exception e) {
             return Health.down()
-                    .withDetail(ERROR, "Error al acceder al repositorio de productos")
-                    .withDetail("mensaje", e.getMessage())
+                    .withDetail(ERROR, ERROR_AL_ACCEDER_AL_REPOSITORIO_DE_PRODUCTOS)
+                    .withDetail(MENSAJE, e.getMessage())
                     .withDetail(SIMULADO, false)
                     .withException(e)
                     .build();
